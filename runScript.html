@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="description"
+	     content="Walkthrough To Validation Framework Platform" />
+      <title>Dive into HVF Platform</title>
+	  <link rel="stylesheet" href="validation_guidebook.css" />
+   </head>
+
+   <body onload="javascript:clearCurrentLink()">
+      <div id="BodyContainer">
+	     <!-- Header -->
+	     <div>
+		    <a href="https://humanbrainproject.eu"><img src="imgs/HBP_Logo.png" alt="HBP Logo" class="logo" /></a>
+			<!-- Subject Title -->
+		    <div id="SubjHeading">Walkthrough To Validation Framework Platform</div>
+			<br style="clear: both;" />
+		 </div>
+		 <!-- Menu Panel -->
+	     <div id="MenuBox">
+                &#x2219;&nbsp;<a href="index.html">Table of Contents.</a><br />
+                &#x2219;&nbsp;<a href="install-setup.html">Installation and Set-up.</a><br />
+		&#x2219;&nbsp;<a href="getModel.html">Choosing and Loading a Model.</a><br />
+		&#x2219;&nbsp;<a href="getTest.html">Choosing and Loading a Test.</a><br />
+                &#x2219;&nbsp;<a href="runTestonModel.html">Running the Desired Validation Test On the Chosen Model.</a><br />
+                &#x2219;&nbsp;<a href="storeData.html">Store the Data of the Results and then Register.</a><br />
+                &#x2219;&nbsp;All the above from a python script.<br />
+	     </div>
+	     <!-- Main Content -->
+	     <div id="ContentBox">
+		    <p>
+	               <h1>Create a python script and run the v-test from the script.</h1>
+                    </p>
+		    <p>
+		       <div class="Figs" onclick="enlargeImage('1')">
+			 <img src="imgs/runScript1.gif" alt="Write .py script"  class="FloatRight" />
+		       </div>
+		    </p>
+                    <p>
+                       If you have walked through the preceeding stages the necessary commands made can be summarized as:
+                       <code>cd hippocampus_CA1_pyramidal</code><br />
+                       <code>import models</code><br />
+                       <code>desired_test_uri = "https://validation.brainsimulation.eu/tests/1"</code><br />
+                       <code>from hbp_validation_framework import ValidationTestLibrary</code><br />
+                       <code>test_library = ValidationTestLibrary(username="lungsi")</code><br />
+                       <code>test = test_library.get_validation_test(desired_test_uri, show_plot=True)</code><br />
+                       <code>score = test.judge(getattr(models, 'Bianchi')(), deep_error=True)</code><br />
+                       <code>from hbp_validation_framework.datastores import CollabDataStore</code><br />
+                       <code>collab_storage = CollabDataStore(username="lungsi", collab_id="1655", base_folder="VUC_Bianchi_DepolTest_results")</code><br />
+                       <code>test_library.register(score, collab_storage)</code><br />
+                    </p>
+                    <p>&nbsp;</p>
+                    <hr>
+		    <p>
+		       <div class="Figs" onclick="enlargeImage('2')">
+			 <img src="imgs/runScript2.gif" alt="Write .py script"  class="FloatRight" />
+		       </div>
+		    </p>
+                    <p>
+                       Rather than manually re-type these commands for every v-test, will it not be convenient to run tests from a script?
+                    </p>
+                    <p>
+                       Here is a demonstration of writing your own script and run it. The script will be created in the directory containing the models (example, <code>hippocampus_CA1_pyramidal</code> folder).
+                    </p>
+ 		    <p>
+		       <h2>How to.</h2>
+		    </p>
+		    <p>
+		       There are various ways of writing a script. Here is one version of a python script.
+		    </p>
+		    <p>
+		       <code>import argparse</code><br />
+		       <code>import inspect</code><br />
+		       <code>import models</code><br />
+		       <code>from hbp_validation_framework import ValidationTestLibrary from hbp_validation_framework.datastores import CollabDataStore</code><br />
+		       <code>#</code><br />
+		       <code># Parses command line arguments</code><br />
+		       <code>parser = argparse.ArgumentParser("Process model to be validated against the URI of the v-test.")</code><br />
+		       <code>parser.add_argument ( "--modelName", help="A model name from hippocampus_CA1_pyramidal", choices= [m[0] for m in inspect.getmembers(models, inspect.isclass) if m[1].__module__ == 'models'])</code><br />
+		       <code>parser.add_argument("--testURI", help="local path to the v-test")</code><br />
+		       <code>parser.add_argument("--userName", default="lungsi", help="Give a username (default: lungsi)") parser.add_argument("--collabID", default="1655", help="The number of the collab (default: 1655)")</code><br />
+		       <code>parser.add_argument("--folderName", default="VUC_modelName_testName_results", help="Give the folder name (default: VUC_modelName_testName_results)")</code><br />
+		       <code>args = parser.parse_args()</code><br />
+		       <code>#</code><br />
+		       <code># Load the model</code><br />
+		       <code>model = getattr(models, args.modelName)()</code><br />
+		       <code>#</code><br />
+		       <code># Load the test</code><br />
+		       <code>desired_test_uri = args.testURI test_library = ValidationTestLibrary(username = args.userName) test = test_library.get_validation_test(desired_test_uri, show_plot=True) score = test.judge(model, deep_error=True)</code><br />
+		       <code>#</code><br />
+		       <code># Store the results</code><br />
+		       <code>collab_storage = CollabDataStore(username = args.userName, collab_id = args.collabID, base_folder = args.folderName)</code>
+		    </p>
+                    <p>
+                       Notice that the core code-lines are the same as described in:
+                       <ul>
+                          <li>How to download test definitions from the framework.</li>
+                          <li>How to run a v-test for a chosen model.</li>
+                          <li>How to store & register the data/results of the v-test.</li>
+                       </ul> 
+                    </p>
+		    <p>&nbsp;</p>
+                    <p>
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('3')">
+				        <img src="imgs/runScript3.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     If you are working from a terminal, to copy-paste the below code you first need to have a .py file (here <code>runTests.py</code>). One way to do this in jupyter notebook is<br />
+                                     &nbsp;<br />
+                                     <code>>>&nbsp;%%writefile runTests.py -a</code><br />
+                                     &nbsp;<br />
+                                     This command will create the <code>runTests.py</code> file in the <code>hippocampus_CA1_pyramidal</code> directory and write the pasted code.
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('4')">
+				        <img src="imgs/runScript4.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     To run this <code>runTests.py</code> script from the jupyter notebook you can use the help feature.<br />
+                                     &nbsp;<br />
+                                     <code>>> %run runTests.py -h</code><br />
+                                     &nbsp;<br />
+                                     You can than run the depolarization block test on the chosen CA1_Bianchi model as shown below<br />
+                                     &nbsp;<br />
+                                     <code>>> %run runTests.py --modelName Bianchi --testURI https://valiation.brainsimulation.eu/tests/1</code><br />
+                                  </td>
+                               </tr>
+                            </table>
+                    </p>
+                    <p>
+                       Note that according to this script by default the data is stored in collab id 1655 with the directory name VUC_modelName_testName_results. These can all be changed or refined.
+                    </p>
+		    <p>&nbsp;</p>
+		</div>
+		<script type="text/javascript" src="clearlink_togglevisibility.js"></script>
+		<noscript><p>Welcome, non-JavaScript-enabled browser.</p></noscript>
+      </div>
+   </body>
+</html>

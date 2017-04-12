@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="description"
+	     content="Walkthrough To Validation Framework Platform" />
+      <title>Dive into HVF Platform</title>
+	  <link rel="stylesheet" href="validation_guidebook.css" />
+   </head>
+
+   <body onload="javascript:clearCurrentLink()">
+      <div id="BodyContainer">
+	     <!-- Header -->
+	     <div>
+		    <a href="https://humanbrainproject.eu"><img src="imgs/HBP_Logo.png" alt="HBP Logo" class="logo" /></a>
+			<!-- Subject Title -->
+		    <div id="SubjHeading">Walkthrough To Validation Framework Platform</div>
+			<br style="clear: both;" />
+		 </div>
+		 <!-- Menu Panel -->
+	     <div id="MenuBox">
+                &#x2219;&nbsp;<a href="index.html">Table of Contents.</a><br />
+                &#x2219;&nbsp;Installation and Set-up.<br />
+		&#x2219;&nbsp;<a href="getModel.html">Choosing and Loading a Model.</a><br />
+		&#x2219;&nbsp;<a href="getTest.html">Choosing and Loading a Test.</a><br />
+                &#x2219;&nbsp;<a href="runTestonModel.html">Running the Desired Validation Test On the Chosen Model.</a><br />
+                &#x2219;&nbsp;<a href="storeData.html">Store the Data of the Results and then Register.</a><br />
+                &#x2219;&nbsp;<a href="runScript.html">All the above from a python script.</a><br />
+	     </div>
+	     <!-- Main Content -->
+	     <div id="ContentBox">
+		    <p>&nbsp;</p>
+                        <p>
+                           These series of instructions will walk you though the installation of core packages needed for running the validation framework, beginning with the installing sciunit.
+                        </p>
+			<p>
+                            <div id="install_sciunit_id">
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('1')">
+				        <img src="imgs/installsciunit.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     <h2>Purpose</h2> <br />
+                                     <strong>Install sciunit.</strong><br />
+
+                                     The <a target="_blank" href="https://validation.brainsimulation.eu/">validation framework</a> is based on <a target="_blank" href="https://github.com/scidash/sciunit">sciunit.</a><br />
+
+                                     The sciunit package is available from <a target="_blank" href="https://github.com/scidash/sciunit">https://github.com/scidash/sciunit</a><br />
+
+                                     &nbsp;<br />
+
+                                     <h2>How to.</h2> <br />
+                                     To install sciunit in the notebook, <br />
+                                     <code>>> !pip install https://github.com/scidash/sciunit/archive/master.zip</code>
+                                  </td>
+                               </tr>
+                            </table>
+                            </div>
+			</p>
+                        <hr>
+                        <p>&nbsp;</p>
+			<p>
+                            <div id="install_hvf_id">
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('2')">
+				        <img src="imgs/installhbpvalidframework.gif" alt="Install hbp-validation-framework"  class="FloatRight" />
+			             </div>
+                                     <h2>Purpose</h2> <br />
+                                     <strong>Install hbp-validation framework.</strong><br />
+
+                                     This is available from <a target="_blank" href="https://github.com/apdavison/hbp-validation-client">https://github.com/apdavison/hbp-validation-client</a>.<br />
+
+                                     &nbsp;<br />
+
+                                     <h2>How to.</h2> <br />
+                                     To install hbp-validation framework in the notebook, <br />
+                                     <code>>> !pip install https://github.com/apdavision/hbp-validation-client/archive/master.zip</code>
+                                  </td>
+                               </tr>
+                            </table>
+                            </div>
+			</p>
+                        <hr>
+			<p>&nbsp;</p>
+			<p>
+                            <div id="install_eFEL_id">
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('3')">
+				        <img src="imgs/installeFEL.gif" alt="Install eFEL"  class="FloatRight" />
+			             </div>
+                                     To run the VUCs (Validation Use Cases) in this collaboratory page there are additional packages needed (they may already be installed in your own collab. page). This page shows the installation of <a target="_blank" href="http://efel.readthedocs.io/">eFEL (Electrophys Feature Extraction Library).</a><br />
+                                     <h2>Purpose</h2> <br />
+                                     <strong>Install eFEL.</strong><br />
+
+                                     This is available from <a target="_blank" href="https://github.com/BlueBrain/eFEL">https://github.com/BlueBrain/eFEL</a>.<br />
+
+                                     &nbsp;<br />
+
+                                     <h2>How to.</h2> <br />
+                                     To install eFEL in the notebook, <br />
+                                     <code>>> !pip install https://github.com/BlueBrain/eFEL/archive/master.zip</code>
+                                  </td>
+                               </tr>
+                            </table>
+                            </div>
+			</p>
+                        <hr>
+			<p>&nbsp;</p>
+			<p>
+                            <div id="install_git_id">
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('4')">
+				        <img src="imgs/installgitpython.gif" alt="Install git-python"  class="FloatRight" />
+			             </div>
+                                     If its not already installed you will also need to have git which gets imported in some validation test scripts and also used in this walkthrough.<br />
+                                     <h2>Purpose</h2> <br />
+                                     <strong>Install git.</strong><br />
+
+                                     This is available from <a target="_blank" href="https://github.com/gitpython-developers/GitPython">https://github.com/gitpython-developers/GitPython</a> or from <a target="_blank" href="https://pypi.python.org/pypi/GitPython/">https://pypi.python.org/pypi/GitPython/</a><br />
+
+                                     &nbsp;<br />
+
+                                     <h2>How to.</h2> <br />
+                                     To install git in the notebook, <br />
+                                     <code>>> !pip install https://github.com/gitpython-developers/GitPython/archive/master.zip</code>
+                                  </td>
+                               </tr>
+                            </table>
+                            </div>
+			</p>
+			<p>&nbsp;</p>
+		</div>
+		<script type="text/javascript" src="clearlink_togglevisibility.js"></script>
+		<noscript><p>Welcome, non-JavaScript-enabled browser.</p></noscript>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="description"
+	     content="Walkthrough To Validation Framework Platform" />
+      <title>Dive into HVF Platform</title>
+	  <link rel="stylesheet" href="validation_guidebook.css" />
+   </head>
+
+   <body onload="javascript:clearCurrentLink()">
+      <div id="BodyContainer">
+	     <!-- Header -->
+	     <div>
+		    <a href="https://humanbrainproject.eu"><img src="imgs/HBP_Logo.png" alt="HBP Logo" class="logo" /></a>
+			<!-- Subject Title -->
+		    <div id="SubjHeading">Walkthrough To Validation Framework Platform</div>
+			<br style="clear: both;" />
+		 </div>
+		 <!-- Menu Panel -->
+	     <div id="MenuBox">
+                &#x2219;&nbsp;<a href="index.html">Table of Contents.</a><br />
+                &#x2219;&nbsp;<a href="install-setup.html">Installation and Set-up.</a><br />
+		&#x2219;&nbsp;<a href="getModel.html">Choosing and Loading a Model.</a><br />
+		&#x2219;&nbsp;<a href="getTest.html">Choosing and Loading a Test.</a><br />
+                &#x2219;&nbsp;Running the Desired Validation Test On the Chosen Model.<br />
+                &#x2219;&nbsp;<a href="storeData.html">Store the Data of the Results and then Register.</a><br />
+                &#x2219;&nbsp;<a href="runScript.html">All the above from a python script.</a><br />
+	     </div>
+	     <!-- Main Content -->
+	     <div id="ContentBox">
+		    <p>
+	           <h1>Running the Desired Validation Test On the Chosen Model.</h1>
+                    </p>
+                    <p>
+                       At this step the user
+                       <ul>
+                          <li>has considered the <a href="getModel.html">model chosen</a> to validate.<br />
+                              For our example: Bianchi (hippocampus CA1 pyramidal cell model)
+                          </li>
+                          <li>has also <a href="getTest.html">downloaded the desired v-test</a>; this has the defined v-test and the data against which the test will be compared.
+                          </li>
+                       </ul>
+                    </p>
+                    <p>
+			<h2 style="text-align:center">Purpose</h2>
+		    </p>
+		    <p>
+			Run the desired validation test on the chosen model.
+		    </p>
+		    <p>&nbsp;</p>
+			<p>
+			   <h2 style="text-align:center">How to.</h2>
+			</p>
+                        <p>
+                            <table style="width:100%">
+                               <tr>
+                                  <td style="border-bottom: 1px solid #ddd;">
+                                     <div class="Figs" onclick="enlargeImage('1')">
+				        <img src="imgs/runTest1.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     The figure illustrates the setup need prior to running the v-test.                       
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td style="border-bottom: 1px solid #ddd;">
+                                     <div class="Figs" onclick="enlargeImage('2')">
+				        <img src="imgs/runTest2.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     Once the setup is done, do<br />
+                                     <code>>>&nbsp;score&nbsp;=&nbsp;test.judge(getattr(models, 'Bianchi')(), deep_error=True)</code><br />
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('3')">
+				        <img src="imgs/runTest3.gif" alt="Install sciunit"  class="FloatRight" />
+			             </div>
+                                     The test score can be printed as shown in the figure.
+                                  </td>
+                               </tr>
+                            </table>
+			</p>
+			<p>&nbsp;</p>
+		</div>
+		<script type="text/javascript" src="clearlink_togglevisibility.js"></script>
+		<noscript><p>Welcome, non-JavaScript-enabled browser.</p></noscript>
+      </div>
+   </body>
+</html>

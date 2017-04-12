@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="description"
+	     content="Walkthrough To Validation Framework Platform" />
+      <title>Dive into HVF Platform</title>
+	  <link rel="stylesheet" href="validation_guidebook.css" />
+   </head>
+
+   <body onload="javascript:clearCurrentLink()">
+      <div id="BodyContainer">
+	     <!-- Header -->
+	     <div>
+		    <a href="https://humanbrainproject.eu"><img src="imgs/HBP_Logo.png" alt="HBP Logo" class="logo" /></a>
+			<!-- Subject Title -->
+		    <div id="SubjHeading">Walkthrough To Validation Framework Platform</div>
+			<br style="clear: both;" />
+		 </div>
+		 <!-- Menu Panel -->
+	     <div id="MenuBox">
+                &#x2219;&nbsp;<a href="index.html">Table of Contents.</a><br />
+                &#x2219;&nbsp;<a href="install-setup.html">Installation and Set-up.</a><br />
+		&#x2219;&nbsp;Choosing and Loading a Model.<br />
+		&#x2219;&nbsp;<a href="getTest.html">Choosing and Loading a Test.</a><br />
+                &#x2219;&nbsp;<a href="runTestonModel.html">Running the Desired Validation Test On the Chosen Model.</a><br />
+                &#x2219;&nbsp;<a href="storeData.html">Store the Data of the Results and then Register.</a><br />
+                &#x2219;&nbsp;<a href="runScript.html">All the above from a python script.</a><br />
+	     </div>
+	     <!-- Main Content -->
+	     <div id="ContentBox">
+		    <p>
+	           <h1>Choosing and Loading a Model.</h1>
+            </p>
+			<p>
+			   <img src="imgs/HVF_Model.gif" alt="HVF Model Catalog"  class="Fullcentered" />
+			</p>
+            <p>
+			   <h2>Purpose</h2>
+			</p>
+			<p>
+			   From the <a target="_blank" href="https://validation.brainsimulation.eu/">HVF</a> list of models the user chooses a model he/she is interested in running the desired validation test.
+			</p>
+			<p>
+			   <h2>How to.</h2>
+			</p>
+			<p>
+			   Let's say we are interested in the hippocampus models. In particular, a model called Bianchi-CA1 pyramidal cell model listed in the HVF model catalog. From the details under this model we see that the code of the model is located in <a target="_blank" href="https://github.com/apdavison/hippounit_CA1_pyramidal">https://github.com/apdavison/hippounit_CA1_pyramidal</a>. Therefore,
+                        </p>
+                        <p>&nbsp;</p>
+                        <hr>
+                        <p>
+                           <h3>Purpose</h3>
+                        </p>
+                        <p>
+                           Get hippocampal model collection containing the chosen Bianchi-CA1 pyramidal cell model. That is <code>clone hippocomapus_CA_pyramidal</code>.
+                        </p>
+                        <p>
+                           <h3>How to.</h3>
+                        </p>
+                        <p>
+                            <table style="width:100%">
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('1')">
+				        <img src="imgs/installmodelhippounit.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     The <strong>hippocampus_CA1_pyramidal</strong> is available from <a target="_blank" href="https://github.com/apdavison/hippounit">https://github.com/apdavison/hippounit</a><br />
+
+                                     &nbsp;<br />
+
+                                     Assuming you are in the desired working directroy type the command below<br />
+                                     <code>>>&nbsp;!git&nbsp;clone&nbsp;https://github.com/apdavison/hippocampal_CA1_pyramidal</code>
+                                  </td>
+                               </tr>
+                            </table>
+                        </p>
+                        <hr>
+                        <p>
+                           <h3>Purpose</h3>
+                        </p>
+                        <p>
+                           Check that <code>hippocomapus_CA_pyramidal</code> has been cloned and then enter the directory.
+                        </p>
+                        <p>
+                           <h3>How to.</h3>
+                        </p>
+                        <p>
+                            <table style="width:100%">
+                               <tr>
+                                  <td style="border-bottom: 1px solid #ddd;">
+                                     <div class="Figs" onclick="enlargeImage('2')">
+				        <img src="imgs/loadmodeldef1.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     See figure on the right to check that the directory <code>hippocomapus_CA_pyramidal</code> is present.
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td style="border-bottom: 1px solid #ddd;">
+                                     <div class="Figs" onclick="enlargeImage('3')">
+				        <img src="imgs/loadmodeldef2.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     Enter the directory <code>hippocomapus_CA_pyramidal</code>.
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('4')">
+				        <img src="imgs/loadmodeldef3.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     Notice the presence of a <code>model</code> module.
+                                  </td>
+                               </tr>
+                            </table>
+                        </p>
+                        <hr>
+                        <p>
+                           <h3>Purpose</h3>
+                        </p>
+                        <p>
+                           Import the <code>models</code> module and extract the list of models available for running validation tests.
+                        </p>
+                        <p>
+                           <h3>How to.</h3>
+                        </p>
+                        <p>
+                            <table style="width:100%">
+                               <tr>
+                                  <td style="border-bottom: 1px solid #ddd;">
+                                     <div class="Figs" onclick="enlargeImage('5')">
+				        <img src="imgs/loadmodeldef4.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     Import the <code>models</code> module. Notice that to do this the user should be in the directory <code>path_to/hippocampus_CA1_pyramidal</code>
+                                  </td>
+                               </tr>
+                               <tr>
+                                  <td>
+                                     <div class="Figs" onclick="enlargeImage('6')">
+				        <img src="imgs/loadmodeldef5.gif" alt="Install hippounit Models"  class="FloatRight" />
+			             </div>
+                                     To get the list of available models do<br />
+                                     <code>>>&nbsp;import&nbsp;inspect</code><br />
+                                     <code>>>&nbsp;[m[0] for m in inspect.getmembers(models, inspect.isclass) if m[1].__module__ == 'models']</code><br />
+                                     In this example the models are:<br />
+                                     <ul>
+                                        <li>Bianchi</li>
+                                        <li>Golding</li>
+                                        <li>KaliFreund</li>
+                                        <li>Migliore</li>
+                                     </ul>
+                                  </td>
+                               </tr>
+                            </table>
+                        </p>
+			<p>&nbsp;</p>
+		</div>
+		<script type="text/javascript" src="clearlink_togglevisibility.js"></script>
+		<noscript><p>Welcome, non-JavaScript-enabled browser.</p></noscript>
+      </div>
+   </body>
+</html>

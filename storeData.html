@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+   <head>
+      <meta name="description"
+	     content="Walkthrough To Validation Framework Platform" />
+      <title>Dive into HVF Platform</title>
+	  <link rel="stylesheet" href="validation_guidebook.css" />
+   </head>
+
+   <body onload="javascript:clearCurrentLink()">
+      <div id="BodyContainer">
+	     <!-- Header -->
+	     <div>
+		    <a href="https://humanbrainproject.eu"><img src="imgs/HBP_Logo.png" alt="HBP Logo" class="logo" /></a>
+			<!-- Subject Title -->
+		    <div id="SubjHeading">Walkthrough To Validation Framework Platform</div>
+			<br style="clear: both;" />
+		 </div>
+		 <!-- Menu Panel -->
+	     <div id="MenuBox">
+                &#x2219;&nbsp;<a href="index.html">Table of Contents.</a><br />
+                &#x2219;&nbsp;<a href="install-setup.html">Installation and Set-up.</a><br />
+		&#x2219;&nbsp;<a href="getModel.html">Choosing and Loading a Model.</a><br />
+		&#x2219;&nbsp;<a href="getTest.html">Choosing and Loading a Test.</a><br />
+                &#x2219;&nbsp;<a href="runTestonModel.html">Running the Desired Validation Test On the Chosen Model.</a><br />
+                &#x2219;&nbsp;Store the Data of the Results and then Register.<br />
+                &#x2219;&nbsp;<a href="runScript.html">All the above from a python script.</a><br />
+	     </div>
+	     <!-- Main Content -->
+	     <div id="ContentBox">
+		    <p>
+	               <h1>Storing the Data of the Validation Test Result and Register the Data with HVF Database.</h1>
+                    </p>
+                    <p>
+                       <div class="Figs" onclick="enlargeImage('1')">
+				   <img src="imgs/storeResults1.gif" alt="Storing the results data"  class="Half" /> <br />
+		       </div>
+                    </p>
+                    <p>
+	               <h2>Purpose</h2>
+		    </p>
+                    <p>
+                       The user had run the desired test on the chosen model. The user wants to store the results data and also register the results data to HVF database.
+                    </p>
+		    <p>&nbsp;</p>
+                    <hr>
+                    <p>
+                       <table style="width:100%">
+                          <tr>
+                             <td style="border-bottom: 1px solid #ddd;">
+                                <div class="Figs" onclick="enlargeImage('2')">
+			        <img src="imgs/storeResults2.gif" alt="Install sciunit"  class="FloatRight" />
+			        </div>
+                                Before proceeding notice that, while running the v-test, you see that the results are placed locally in <code>./figs/depol_block/Bianchi/</code>.                      
+                             </td>
+                          </tr>
+                          <tr>
+                             <td>
+                                <div class="Figs" onclick="enlargeImage('3')">
+			        <img src="imgs/storeResults3.gif" alt="Install sciunit"  class="FloatRight" />
+			        </div>
+                                Therefore when user goes into this directory you can see the data of the results.
+                             </td>
+                          </tr>
+                      </table>
+		    </p>
+                    <p>&nbsp;</p>
+                    <hr>
+                    <p>
+                       <h3>Purpose</h3>
+                    </p>
+                    <p>
+                       Set up a location (directory) to store results data. Then store the results data in the chosen location.
+                    </p>
+                    <p>
+                       <h3>How to.</h3>
+                    </p>
+                    <p>
+                       <div class="Figs" onclick="enlargeImage('4')">
+		          <img src="imgs/storeResults4.gif" alt="Install sciunit"  class="FloatRight" />
+		       </div>
+                       At current level of HVF development the user can store the data in the HBP-collaboratory storage space.<br />
+                       &nbsp;<br />
+                       Let's say the user wants to put the results data in the storage of the collab <a target="_blank" href="https://collab.humanbrainproject.eu/#/collab/1655/">https://collab.humanbrainproject.eu/#/collab/1655/</a><br />
+                       &nbsp;<br />
+                       From the collab. link <a target="_blank" href="https://collab.humanbrainproject.eu/#/collab/1655/">https://collab.humanbrainproject.eu/#/collab/<strong><big>1655</big></strong>/</a> you see that this collab ID is <strong>1655</strong>.<br />
+                       &nbsp;<br />
+                       The user creates a directory in the chosen collab storage. Say, <code>VUC_Bianchi_DepolTest_results</code> is the name of the directory where the results data will be stored.<br />
+                       &nbsp;<br />
+                       Therefore,<br />
+                       &nbsp;<br />
+                       <code>>>&nbsp;from&nbsp;hbp_validation_framework.datastores import CollabDataStore</code><br />
+                       
+                       <code>>>&nbsp;collab_storage&nbsp;=&nbsp;CollabDataStore (username="lungsi",collab_id="1655",base_folder="VUC_Bianchi_DepolTest_results")</code><br />
+                       &nbsp;<br />
+                       The <code>hbp_validation_framework</code> method <code>CollabDataStore</code> in addition to <code>username</code> the two other arguments are: <code>collab_id</code> and the <code>base_folder</code>.
+                    </p>
+                    <p>
+                      <div class="Figs" onclick="enlargeImage('5')">
+			<img src="imgs/storeResults5.gif" alt="Storing the results data"  class="Half" /> <br />
+		      </div>
+                    </p>
+                    <p>
+                      After running the code to store the data the user can now visit the collab storage and see that there is a <code>VUC_Bianchi_DepolTest_results</code> directory containing the results data.
+                    </p>
+                    <p>&nbsp;</p>
+                    <hr>
+                    <p>
+                       <h3>Purpose</h3>
+                    </p>
+                    <p>
+                       Register the results data.
+                    </p>
+                    <p>
+                       <h3>How to.</h3>
+                    </p>
+                       <div class="Figs" onclick="enlargeImage('6')">
+		          <img src="imgs/storeResults6.gif" alt="Install sciunit"  class="FloatRight" />
+          	       </div>
+                       It is recommended that the results data are registered. To register the data do (see also video below):
+
+                       <code>>>&nbsp;test_library.register(score, collab_storage)</code>
+                    </p>
+                    <p>&nbsp;</p>
+                    <p>
+                       After running the code visiting <a target="_blank" href="https://validation.brainsimulation.eu/">HVF</a> 'Test Results' shows the registration of the results data in the HVF database.
+                    </p>
+                    <p>
+		       <img src="imgs/HVF_Results.gif" alt="HVF Test Catalog"  class="Fullcentered" />
+		    </p>
+   		    <p>&nbsp;</p>
+		</div>
+		<script type="text/javascript" src="clearlink_togglevisibility.js"></script>
+		<noscript><p>Welcome, non-JavaScript-enabled browser.</p></noscript>
+      </div>
+   </body>
+</html>
