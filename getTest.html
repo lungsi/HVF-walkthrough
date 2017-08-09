@@ -107,7 +107,7 @@
                                      However for this to be of any practical use in running the validation the above test URI must be broken down (i.e, dowload test definition) using the hbp-validation-framework as follows,<br />
 			             <strong>Call the ValidationTestLibrary Class which has the methods for breaking down the test URI. Then login to the HBP Validation Test Library (you will need an account).</strong><br />
                                      <code>>>&nbsp;from&nbsp;hbp_validation_framework&nbsp;import&nbsp;ValidationTestLibrary</code><br />
-                                     <code>>>&nbsp;test_library&nbsp;=&nbsp;ValidationTestLibrary(username="*****")</code><br />
+                                     <code>>>&nbsp;test_library&nbsp;=&nbsp;ValidationTestLibrary(username="<name_here>")</code><br />
                                      &nbsp;
                                   </td>
                                </tr>
@@ -118,7 +118,7 @@
 			             </div>
                                      &nbsp;<br />
                                      To answer <strong>What is the name of validation test with respect to the HBP test library?</strong><br />
-                                     <code>>>&nbsp;test&nbsp;=&nbsp;test_library.get_validation_test((desired_test_uri)</code><br />
+                                     <code>>>&nbsp;test&nbsp;=&nbsp;test_library.get_validation_test((desired_test_uri))</code><br />
                                      &nbsp;
                                   </td>
                                </tr>
